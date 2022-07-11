@@ -4,22 +4,54 @@ import java.util.Scanner;
 public class Console {
     public static void main(String[] args) {
 
-        Board board = new Board();
         GameImpl game = new GameImpl();
         Scanner keyboard = new Scanner(System.in);
+        String guess;
 
-        while (true){
-            System.out.println("");
-            System.out.println("Please guess");
-            String guess = keyboard.nextLine();
+        game.setEmptyBoard();
 
+        while (true) {
             System.out.println();
-            char row = guess.charAt(0);
-            int element =Character.getNumericValue(guess.charAt(1));
+            game.getBoardState();
 
-            game.playGame(row, element);
+
+            while (true) {
+                System.out.println("Please, enter 'A' row guess");
+                guess = keyboard.nextLine();
+                int element = Character.getNumericValue(guess.charAt(1));
+                if (guess.charAt(0) == 'A'&& element <8) {
+                    game.setRow(guess);
+                    break;
+                } else {
+                    System.out.println("You enter wrong coordination's. Please, try again");
+                }
+            }
+
+
+            while (true) {
+                System.out.println("Please, enter 'B' row guess");
+                guess = keyboard.nextLine();
+                int element = Character.getNumericValue(guess.charAt(1));
+                if (guess.charAt(0) == 'B' && element <8) {
+                    game.setRow(guess);
+                    break;
+                } else {
+                    System.out.println("You enter wrong coordination's. Please, try again");
+                }
+            }
+
+            String firstGuess = game.getFirstGuessedWord();
+            String secondGuess = game.getSecondGuessedWord();
+
+            if (game.checkIfWordsEqual(firstGuess, secondGuess)) {
+                System.out.println("Please, try again.");
+                System.out.println();
+            } else {
+                System.out.println("Great.");
+                System.out.println();
+            }
         }
-    }
 
+    }
 
 }

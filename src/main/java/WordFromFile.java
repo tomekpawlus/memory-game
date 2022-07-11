@@ -10,7 +10,7 @@ public class WordFromFile implements WordGenerator {
 
     @Override
     public String generateWord() {
-        try{
+        try {
             //Read file
             Scanner scanner = new Scanner(new File("/Users/tomekpawlus/Downloads/memory-game/core/src/main/resources/Words.txt"));
             //Add words to ArrayList
@@ -22,7 +22,8 @@ public class WordFromFile implements WordGenerator {
             Random rand = new Random();
             String word = words.get(rand.nextInt(words.size()));
 
-            return word;} catch (FileNotFoundException e){
+            return word;
+        } catch (FileNotFoundException e) {
             return "File was not found";
         }
 

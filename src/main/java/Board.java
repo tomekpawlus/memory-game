@@ -6,21 +6,6 @@ import java.util.Collections;
 public class Board {
 
     ArrayList<String> firstRow = new ArrayList<>();
-    ArrayList<String> secondRow = new ArrayList<>();
-
-    public ArrayList<ArrayList<String>> createBoard(int numberOfWords) {
-
-        firstRow = getFirstRow(numberOfWords);
-        secondRow = getSecondRow(firstRow);
-
-        System.out.println(firstRow);
-        System.out.println(secondRow);
-
-        ArrayList<ArrayList<String>> board = new ArrayList<>();
-        board.add(firstRow);
-        board.add(secondRow);
-        return board;
-    }
 
     public ArrayList<String> getFirstRow (int numberOfWords){
         WordGenerator wordGenerator = new WordFromFile();
