@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface Game {
+
+    int getNumberOfGuesses();
+
+    int getNumberOfWordsInRow();
+
     void setFirstRow(int numberOfWordsInRow);
 
     void setSecondRow(List<String> firstRow);
@@ -27,6 +32,10 @@ public interface Game {
     void setLevel(Level level);
 
     void reset();
+
+    boolean isGameWon();
+
+    boolean isGameLost();
 
 
 }
