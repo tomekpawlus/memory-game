@@ -1,9 +1,9 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import com.tmpw.WordFromFile;
+import com.tmpw.WordGenerator;
 
 import java.io.FileNotFoundException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class WordFromFileTest {
     @Test
