@@ -1,11 +1,13 @@
-import org.junit.jupiter.api.Assertions;
+package com.tmpw;
+
 import org.junit.jupiter.api.Test;
-import com.tmpw.WordFromFile;
-import com.tmpw.WordGenerator;
 
 import java.io.FileNotFoundException;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class WordFromFileTest {
+
     @Test
     void generateWordWhenFileFound() throws FileNotFoundException {
 
@@ -14,8 +16,8 @@ class WordFromFileTest {
         //when
         String word = wordGenerator.generateWord();
         //then
-        System.out.println(word);
-        Assertions.assertNotNull(word, "Word should not be null");
+        assertNotNull(word, "Word should not be null");
+
     }
 
 }

@@ -17,7 +17,7 @@ public class WordFromFile implements WordGenerator {
     public String generateWord() {
         try {
             //Read file
-            Scanner scanner = new Scanner(new File("/Users/tomekpawlus/Downloads/memory-game/core/src/main/resources/Words.txt"));
+            Scanner scanner = new Scanner(new File("/Users/tomekpawlus/Desktop/Learning Java/1_MyProjects/memory-game/src/main/resources/Words.txt"));
             //Add words to ArrayList
             List<String> words = new ArrayList<>();
             while (scanner.hasNext()) {

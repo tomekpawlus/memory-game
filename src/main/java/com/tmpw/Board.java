@@ -9,13 +9,16 @@ import java.util.List;
 @Component
 public class Board {
 
-    private List<String> firstRow=new ArrayList<>();
+    // ========fields========
+    private List<String> firstRow = new ArrayList<>();
     private WordGenerator wordGenerator;
 
+    // ========constructor========
     public Board(WordGenerator wordGenerator) {
         this.wordGenerator = wordGenerator;
     }
 
+    // ========public methods========
     public List<String> generateFirstRow(int numberOfWordsInRow) {
         for (int i = 0; i < numberOfWordsInRow; i++) {
             String word = wordGenerator.generateWord();

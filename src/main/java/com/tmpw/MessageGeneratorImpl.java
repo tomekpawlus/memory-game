@@ -16,7 +16,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
     public String getMessageResult() {
         if (game.isGameWon()) {
             return "\n ---------------------------------------- \n You won the Memory Game! \n --------------------------------------- "
-                    +"You solved the memory game after " + game.getNumberOfGuesses();
+                    +"\n You solved the memory game after " + game.getNumberOfGuesses();
         } else if (game.isGameLost()) {
             return "\n ---------------------------------------- \n Sorry, you use all the chances \n ---------------------------------------";
         }

@@ -3,6 +3,8 @@ package com.tmpw;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +29,15 @@ public class GameImpl implements Game {
     private List<String> emptyFirstRow;
     private List<String> emptySecondRow;
 
+    public Instant inst1;
+    public Instant inst2;
+
     // ========constructors========
 
     public GameImpl(Board board) {
 
-        this.board = board;}
+        this.board = board;
+    }
 
 
     // ========public methods========
@@ -42,7 +48,7 @@ public class GameImpl implements Game {
     }
 
     @Override
-    public void reset() {
+    public void setGame() {
         setFirstRow(numberOfWordsInRow);
         setSecondRow(firstRow);
         setEmptyBoard();
@@ -64,7 +70,7 @@ public class GameImpl implements Game {
         for (int i = 0; i < numberOfWordsInRow; i++) {
             this.secondRow.add(secondRow.get(i));
         }
-        }
+    }
 
     @Override
     public List<String> getEmptyFirstRow() {
@@ -99,15 +105,17 @@ public class GameImpl implements Game {
 
     @Override
     public void getBoardState() {
-        System.out.println(firstRow);
-        System.out.println(secondRow);
+//        System.out.println(firstRow);
+//        System.out.println(secondRow);
 
         System.out.println("----------------------------------");
         System.out.println("Guess chances: " + remainingGuesses);
 
-        if(numberOfWordsInRow == 4){
-            System.out.println("  | 1 | 2 | 3 | 4 |");}
-        else{System.out.println("  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |"); }
+        if (numberOfWordsInRow == 4) {
+            System.out.println("  | 1 | 2 | 3 | 4 |");
+        } else {
+            System.out.println("  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |");
+        }
 
         System.out.print("A | ");
         for (String element : emptyFirstRow) {
@@ -124,7 +132,7 @@ public class GameImpl implements Game {
     @Override
     public void setGuess(String guess) {
         char row = guess.charAt(0);
-        int element = Character.getNumericValue(guess.charAt(1)-1);
+        int element = Character.getNumericValue(guess.charAt(1) - 1);
 
         if (row == 'A') {
             String guessedWord = firstRow.get(element);
@@ -138,7 +146,7 @@ public class GameImpl implements Game {
             this.secondGuessedWord = guessedWord;
             this.secondGuessIndex = element;
             this.remainingGuesses--;
-            this.numberOfGuesses ++;
+            this.numberOfGuesses++;
             getBoardState();
         }
     }
@@ -150,7 +158,7 @@ public class GameImpl implements Game {
             emptyFirstRow.set(firstGuessIndex, "X");
             emptySecondRow.set(secondGuessIndex, "X");
             return true;
-        }else if (firstGuessedWord.equals(secondGuessedWord)) {
+        } else if (firstGuessedWord.equals(secondGuessedWord)) {
             emptyFirstRow.set(firstGuessIndex, "O");
             emptySecondRow.set(secondGuessIndex, "O");
             return false;
@@ -170,7 +178,6 @@ public class GameImpl implements Game {
                 this.remainingGuesses = 10;
                 break;
         }
-
     }
 
     @Override
@@ -181,12 +188,14 @@ public class GameImpl implements Game {
         return true;
     }
 
-    public int getNumberOfGuesses() {
-        return numberOfGuesses;
-    }
-
     @Override
     public boolean isGameLost() {
         return !isGameWon() && remainingGuesses <= 0;
     }
+
+    @Override
+    public int getNumberOfGuesses() {
+        return numberOfGuesses;
+    }
+
 }

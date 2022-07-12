@@ -1,6 +1,5 @@
 package com.tmpw;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface Game {
@@ -31,12 +30,10 @@ public interface Game {
 
     void setLevel(Level level);
 
-    void reset();
+    void setGame();
 
     boolean isGameWon();
 
     boolean isGameLost();
 
-
 }
-
